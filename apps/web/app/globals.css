@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --zm-primary: #00afeb;
+  --zm-text: #e0e0e0;
+  --zm-bg: #0a1f44;
+  --zm-surface: #102a5c;
+  --zm-surface-2: #14356f;
+  --zm-border: rgba(0, 175, 235, 0.28);
+  --zm-muted: #b8c2d1;
+  --zm-success: #22c55e;
+  --zm-warning: #f59e0b;
+  --zm-danger: #ef4444;
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at top right, rgba(0, 175, 235, 0.2), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(20, 53, 111, 0.5), transparent 55%),
+    var(--zm-bg);
+  color: var(--zm-text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+.zm-panel {
+  @apply rounded-xl border border-zm-primary/30 bg-zm-surface shadow-zm-glow;
+}
+
+.zm-markdown h1,
+.zm-markdown h2,
+.zm-markdown h3 {
+  @apply mt-4 mb-2 font-semibold text-zm-text;
+}
+
+.zm-markdown p,
+.zm-markdown li {
+  @apply text-zm-text/90;
+}
+
+.zm-markdown ul {
+  @apply ml-6 list-disc;
+}
+
+.zm-markdown code {
+  @apply rounded bg-zm-bg/60 px-1 py-0.5 text-zm-primary;
+}
