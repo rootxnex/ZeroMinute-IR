@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./services/analyzer
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ETHERSCAN_API_KEY=${ETHERSCAN_API_KEY}
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
