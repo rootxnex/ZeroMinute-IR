@@ -3,9 +3,9 @@ services:
     name: zerominute-analyzer
     env: python
     plan: free
-    rootDir: services/analyzer
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    rootDir: .
+    buildCommand: pip install -r services/analyzer/requirements.txt
+    startCommand: uvicorn services.analyzer.main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: ETHERSCAN_API_KEY
         sync: false
