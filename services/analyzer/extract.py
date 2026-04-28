@@ -5,7 +5,10 @@ import re
 from collections.abc import Iterable
 from typing import Any
 
-from .models import SourceBundle
+try:
+    from .models import SourceBundle
+except ImportError:
+    from models import SourceBundle
 
 _FUNCTION_DECLARATION_RE = re.compile(r"\bfunction\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(")
 _ROLE_CONSTANT_RE = re.compile(r"\b([A-Z][A-Z0-9_]*_ROLE)\b")

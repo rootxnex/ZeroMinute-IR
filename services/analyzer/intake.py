@@ -10,7 +10,10 @@ from urllib.parse import quote
 
 import httpx
 
-from .models import SourceBundle
+try:
+    from .models import SourceBundle
+except ImportError:
+    from models import SourceBundle
 
 try:
     from eth_utils import is_checksum_address, to_checksum_address

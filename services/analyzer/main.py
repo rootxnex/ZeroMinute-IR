@@ -7,15 +7,26 @@ from typing import Any
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
-from .extract import extract_emergency_capabilities
-from .intake import (
-    InvalidAddressError,
-    SourceNotVerifiedError,
-    UnsupportedChainError,
-    UpstreamFetchError,
-    fetch_source_bundle,
-)
-from .models import AnalyzeRequest, SourceBundle
+try:
+    from .extract import extract_emergency_capabilities
+    from .intake import (
+        InvalidAddressError,
+        SourceNotVerifiedError,
+        UnsupportedChainError,
+        UpstreamFetchError,
+        fetch_source_bundle,
+    )
+    from .models import AnalyzeRequest, SourceBundle
+except ImportError:
+    from extract import extract_emergency_capabilities
+    from intake import (
+        InvalidAddressError,
+        SourceNotVerifiedError,
+        UnsupportedChainError,
+        UpstreamFetchError,
+        fetch_source_bundle,
+    )
+    from models import AnalyzeRequest, SourceBundle
 
 logging.basicConfig(
     level=logging.INFO,
