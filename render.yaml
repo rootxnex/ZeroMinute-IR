@@ -2,6 +2,7 @@ services:
   - type: web
     name: zerominute-analyzer
     env: python
+    plan: free
     rootDir: services/analyzer
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
