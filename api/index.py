@@ -201,16 +201,15 @@ def _deterministic_runbook(contract: dict[str, Any], findings: dict[str, Any]) -
     return runbook_json, markdown
 
 
-@app.get("/health")
-def health() -> dict[str, str]:
-    logger.info("request method=GET path=/health status=200")
-    return {"status": "ok"}
+@app.get("/api/health")
+def health_check() -> dict[str, str]:
+    return {"status": "ok", "version": "1.0.0"}
 
 
-@app.post("/analyze")
+@app.post("/api/analyze")
 def analyze(request: AnalyzeRequest) -> dict[str, Any]:
     start = time.perf_counter()
-    logger.info("request.start method=POST path=/analyze chain_id=%s", request.chain_id)
+    logger.info("request.start method=POST path=/api/analyze chain_id=%s", request.chain_id)
     try:
         bundle = fetch_source_bundle(request.chain_id, request.address)
         findings = extract_emergency_capabilities(bundle)

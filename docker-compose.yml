@@ -3,8 +3,8 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./services/analyzer
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: api/Dockerfile
     ports:
       - "8000:8000"
     environment:
@@ -13,7 +13,7 @@ services:
 
   frontend:
     build:
-      context: ./apps/web
+      context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
